@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { decode } from "html-entities"
 import { getQuiz } from "../api"
+import { mergeAndShuffle } from "../utils/shuffle"
 
 export default function Questions() {
 
@@ -19,7 +20,7 @@ export default function Questions() {
       {
         quiz.map(el => {
 
-          const choices = [...el.incorrect_answers, el.correct_answer]
+          const choices = mergeAndShuffle(el.incorrect_answers, el.correct_answer)
 
           return(
             <div className="question">
