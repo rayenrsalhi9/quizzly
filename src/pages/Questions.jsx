@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { decode } from "html-entities"
 import { getQuiz } from "../api"
 
 export default function Questions() {
@@ -22,9 +23,11 @@ export default function Questions() {
 
           return(
             <div className="question">
-              <h2>{el.question}</h2>
+              <h2>{decode(el.question)}</h2>
               <div className="choices">
-                {choices.map(choice => <button>{choice}</button>)}
+                {
+                  choices.map(choice => <button>{choice}</button>)
+                }
               </div>
             </div>
           )
