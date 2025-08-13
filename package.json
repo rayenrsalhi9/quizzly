@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "html-entities": "^2.6.0",
+    "nanoid": "^5.1.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },

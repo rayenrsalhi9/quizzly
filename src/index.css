@@ -60,28 +60,33 @@ section.home button:hover {
     background-color: #293264;
 }
 
-section.quiz-container {
+/* quiz container design */
+form.quiz-container {
     padding: 2em 1.5em;
 }
 
-section.quiz-container .question {
+form.quiz-container .question {
     padding: 1.5em 0;
     border-bottom: 2px solid #DBDEF0;
 }
 
-section.quiz-container .question h2 {
+form.quiz-container .question h2 {
     margin-bottom: .75em;
 }
 
-section.quiz-container .question .choices {
+form.quiz-container .question .choices {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: .75em;
 }
 
-section.quiz-container .question .choices button {
-    font-size: 1.125rem;
+form.quiz-container .question .choices input[type='radio'] {
+    display: none;
+}
+
+form.quiz-container .question .choices label {
+    font-weight: 600;
     padding: .25em 1em;
     border: 1px solid #4D5B9E;
     color: #293264;
@@ -90,6 +95,11 @@ section.quiz-container .question .choices button {
     transition: .6s ease;
 }
 
-section.quiz-container .question .choices button:hover {
+form.quiz-container .question .choices label:hover {
     background-color: #D6DBF5;
+}
+
+form.quiz-container .question .choices input[type='radio']:checked + label {
+    background-color: #D6DBF5;
+    box-shadow: 0 4px 8px #D6DBF5;
 }
