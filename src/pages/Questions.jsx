@@ -27,7 +27,7 @@ export default function Questions() {
               <h2>{decode(el.question)}</h2>
               <div className="choices">
                 {
-                  choices.map(choice => <button>{choice}</button>)
+                  choices.map(choice => <button>{decode(choice)}</button>)
                 }
               </div>
             </div>
