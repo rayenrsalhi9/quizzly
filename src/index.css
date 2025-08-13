@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Karla', sans-serif;
+}
+
+body {
+    background-color: #F5F7FB;
+    color: #293264;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+section.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    text-align: center;
+    padding: 1em;
+}
+
+section.home h1 {
+    font-size: 2.5rem;
+}
+
+section.home p {
+    font-size: 1.25rem;
+    width: 100%;
+    max-width: 550px;
+    margin: 1em auto;
+    line-height: 1.5;
+}
+
+section.home button {
+    font-size: 1.25rem;
+    background-color: #4D5B9E;
+    color: #F5F7FB;
+
+    border: none;
+    border-radius: 12px;
+
+    padding: 1em 2em;
+
+    cursor: pointer;
+    transition: .6s ease;
+}
+
+section.home button:hover {
+    background-color: #293264;
+}
