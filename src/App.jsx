@@ -6,11 +6,11 @@ export default function App() {
 
     const [isHome, setIsHome] = useState(true)
 
-  return (
-    <div className="container">
-        {
-            isHome ? <Home setIsHome={setIsHome} /> : <Questions />
-        }
-    </div>
-  )
+    return (
+      <div className="container">
+          {
+              isHome ? <Home setIsHome={setIsHome} /> : <Questions />
+          }
+      </div>
+    )
 }

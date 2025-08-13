@@ -59,3 +59,37 @@ section.home button {
 section.home button:hover {
     background-color: #293264;
 }
+
+section.quiz-container {
+    padding: 2em 1.5em;
+}
+
+section.quiz-container .question {
+    padding: 1.5em 0;
+    border-bottom: 2px solid #DBDEF0;
+}
+
+section.quiz-container .question h2 {
+    margin-bottom: .75em;
+}
+
+section.quiz-container .question .choices {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .75em;
+}
+
+section.quiz-container .question .choices button {
+    font-size: 1.125rem;
+    padding: .25em 1em;
+    border: 1px solid #4D5B9E;
+    color: #293264;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .6s ease;
+}
+
+section.quiz-container .question .choices button:hover {
+    background-color: #D6DBF5;
+}

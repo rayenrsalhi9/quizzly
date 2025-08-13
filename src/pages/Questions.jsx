@@ -1,5 +1,35 @@
+import { useState, useEffect } from "react"
+import { getQuiz } from "../api"
+
 export default function Questions() {
+
+  const [quiz, setQuiz] = useState([])
+
+  useEffect(() => {
+    async function getData() {
+      const data = await getQuiz()
+      setQuiz(data)
+    }
+    getData()
+  }, [])
+
   return (
-    <h2>Question page goes here</h2>
+    <section className="quiz-container">
+      {
+        quiz.map(el => {
+
+          const choices = [...el.incorrect_answers, el.correct_answer]
+
+          return(
+            <div className="question">
+              <h2>{el.question}</h2>
+              <div className="choices">
+                {choices.map(choice => <button>{choice}</button>)}
+              </div>
+            </div>
+          )
+        })
+      }
+    </section>
   )
 }
