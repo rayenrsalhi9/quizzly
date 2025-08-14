@@ -116,6 +116,23 @@ form.quiz-container .question .choices input[type='radio']:checked + label {
     box-shadow: 0 4px 8px #D6DBF5;
 }
 
+form.quiz-container button.submit-btn {
+    display: block;
+    margin: 2em auto 0;
+    border: none;
+    border-radius: 8px;
+    background-color: #4D5B9E;
+    color: #F5F7FB;
+    font-size: 1.125rem;
+    padding: 1em 1.5em;
+    cursor: pointer;
+    transition: .6s ease;
+}
+
+form.quiz-container button.submit-btn:hover {
+    background-color: #293264;
+}
+
 /* loading status design */
 .loading-status {
     text-align: center;

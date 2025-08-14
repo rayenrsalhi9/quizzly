@@ -16,11 +16,14 @@ export default function Questions() {
     getData()
   }, [])
 
+  const correctAnswers = quiz.map(el => el.correct_answer)
+
   return (
     <form className="quiz-container">
       {
         quiz.length > 0 ?
-        quiz.map((el, index) => {
+        <>
+        {quiz.map((el, index) => {
 
           const choices = mergeAndShuffle(el.incorrect_answers, el.correct_answer)
           .map(el => decode(el))
@@ -30,26 +33,29 @@ export default function Questions() {
               <h2>{decode(el.question)}</h2>
               <div className="choices">
                 {
-                  choices.map((choice, i) => {
+                  choices.map(choice => {
                     const choiceId = nanoid()
                     return (
-                      <>
+                      <div key={choice}>
                         <input 
                           type="radio" 
                           name={`answer-${index + 1}`} 
                           id={choiceId}
-                          key={i} 
                           value={choice}
+                          required
                         />
                         <label htmlFor={choiceId}>{choice}</label>
-                      </>
+                      </div>
                     )
                   })
                 }
               </div>
             </div>
           )
-        }) : <p className="loading-status">Loading Quiz...</p>
+        })} 
+        <button className="submit-btn">Check answers</button>
+        </>
+        : <p className="loading-status">Loading Quiz...</p>
       } 
     </form>
   )
