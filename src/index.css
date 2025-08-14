@@ -20,6 +20,7 @@ body {
 }
 
 section.home {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,6 +59,16 @@ section.home button {
 
 section.home button:hover {
     background-color: #293264;
+}
+
+section.home img {
+    position: absolute;
+    width: 100%;
+    max-width: 350px;
+    z-index: -1;
+    right: -10px;
+    top: -1%;
+    opacity: .2;
 }
 
 /* quiz container design */
