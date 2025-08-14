@@ -73,31 +73,31 @@ section.home img {
 }
 
 /* quiz container design */
-form.quiz-container {
+.quiz-container {
     padding: 2em 1.5em;
 }
 
-form.quiz-container .question {
+.quiz-container .question {
     padding: 1.5em 0;
     border-bottom: 2px solid #DBDEF0;
 }
 
-form.quiz-container .question h2 {
+.quiz-container .question h2 {
     margin-bottom: .75em;
 }
 
-form.quiz-container .question .choices {
+.quiz-container .question .choices {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: .75em;
 }
 
-form.quiz-container .question .choices input[type='radio'] {
+.quiz-container .question .choices input[type='radio'] {
     display: none;
 }
 
-form.quiz-container .question .choices label {
+.quiz-container .question .choices label {
     font-weight: 600;
     padding: .25em 1em;
     border: 1px solid #4D5B9E;
@@ -107,16 +107,16 @@ form.quiz-container .question .choices label {
     transition: .6s ease;
 }
 
-form.quiz-container .question .choices label:hover {
+.quiz-container .question .choices label:hover {
     background-color: #D6DBF5;
 }
 
-form.quiz-container .question .choices input[type='radio']:checked + label {
+.quiz-container .question .choices input[type='radio']:checked + label {
     background-color: #D6DBF5;
     box-shadow: 0 4px 8px #D6DBF5;
 }
 
-form.quiz-container button.submit-btn {
+.quiz-container button.submit-btn {
     display: block;
     margin: 2em auto 0;
     border: none;
@@ -129,7 +129,7 @@ form.quiz-container button.submit-btn {
     transition: .6s ease;
 }
 
-form.quiz-container button.submit-btn:hover {
+.quiz-container button.submit-btn:hover {
     background-color: #293264;
 }
 
