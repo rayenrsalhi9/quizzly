@@ -19,6 +19,13 @@ export default function Questions() {
     }))
   }
 
+  function handleSubmit() {
+    console.log('final answer:')
+    console.log(correctAnswers)
+    console.log(userAnswers)
+    console.log(`correct answers: ${userAnswers.filter(el => correctAnswers.includes(el)).length} / 10`)
+  }
+
   useEffect(() => {
     async function getData() {
       const res = await getQuiz()
@@ -74,6 +81,7 @@ export default function Questions() {
           <button 
             className="submit-btn" 
             disabled={!canCheckAnswer}
+            onClick={handleSubmit}
           >
             Check answers
           </button>
