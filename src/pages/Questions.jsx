@@ -65,6 +65,7 @@ export default function Questions() {
                             name={`answer-${index + 1}`} 
                             id={choiceId}
                             value={choice}
+                            disabled={isResultRevealed}
                             required
                           />
                           <label 

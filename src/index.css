@@ -116,6 +116,12 @@ section.home img {
     box-shadow: 0 4px 8px #D6DBF5;
 }
 
+.quiz-container .question .choices input[type='radio']:disabled + label {
+    opacity: .7;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 .quiz-container button.submit-btn {
     display: block;
     margin: 1.25em auto 0;
