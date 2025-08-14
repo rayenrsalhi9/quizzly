@@ -9,6 +9,8 @@ export default function Questions() {
   const [quiz, setQuiz] = useState([])
   const [userAnswers, setUserAnswers] = useState(new Array(10).fill(null))
 
+  console.log(quiz)
+
   const correctAnswers = quiz.map(el => el.correct_answer)
 
   const canCheckAnswer = userAnswers.every(answer => answer)
@@ -21,7 +23,14 @@ export default function Questions() {
 
   useEffect(() => {
     async function getData() {
-      const data = await getQuiz()
+      const res = await getQuiz()
+      const data = res.map(el => (
+        {
+          ...el, 
+          choices: mergeAndShuffle(el.incorrect_answers, el.correct_answer)
+          .map(el => decode(el))
+        }
+      ))
       setQuiz(data)
     }
     getData()
@@ -34,15 +43,12 @@ export default function Questions() {
         <>
           {quiz.map((el, index) => {
 
-            const choices = mergeAndShuffle(el.incorrect_answers, el.correct_answer)
-            .map(el => decode(el))
-
             return(
               <div className="question" key={index}>
                 <h2>{decode(el.question)}</h2>
                 <div className="choices">
                   {
-                    choices.map(choice => {
+                    el.choices.map(choice => {
                       const choiceId = nanoid()
                       return (
                         <div key={choice}>
