@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { decode } from "html-entities"
 import { nanoid } from "nanoid"
 import { getQuiz } from "../api"
@@ -6,15 +6,37 @@ import { mergeAndShuffle } from "../utils/shuffle"
 import clsx from "clsx"
 
 export default function Questions() {
-
+  
+  // states
   const [quiz, setQuiz] = useState([])
   const [userAnswers, setUserAnswers] = useState(new Array(10).fill(null))
   const [isResultRevealed, setIsResultRevealed] = useState(false)
+  const [isGameReplayed, setIsGameReplayed] = useState(false)
 
+  // refs
+  const quizContainerRef = useRef(null)
+
+  // side effects
+  useEffect(() => {
+    async function getData() {
+      const res = await getQuiz()
+      const data = res.map(el => (
+        {
+          ...el, 
+          choices: mergeAndShuffle(el.incorrect_answers, el.correct_answer)
+          .map(el => decode(el))
+        }
+      ))
+      setQuiz(data)
+    }
+    getData()
+  }, [isGameReplayed])
+
+  // derived values from states
   const correctAnswers = quiz.map(el => el.correct_answer)
-
   const canCheckAnswer = userAnswers.every(answer => answer)
 
+  // function declarations
   function handleChange(answerIndex, choosenAnswer) {
     setUserAnswers(prev => prev.map((el, index) => {
       return index === answerIndex ? choosenAnswer : el
@@ -30,23 +52,15 @@ export default function Questions() {
     return `You scored ${score}/${correctAnswers.length} correct answers`
   }
 
-  useEffect(() => {
-    async function getData() {
-      const res = await getQuiz()
-      const data = res.map(el => (
-        {
-          ...el, 
-          choices: mergeAndShuffle(el.incorrect_answers, el.correct_answer)
-          .map(el => decode(el))
-        }
-      ))
-      setQuiz(data)
-    }
-    getData()
-  }, [])
+  function playAgain() {
+    setIsResultRevealed(false)
+    setUserAnswers(new Array(10).fill(null))
+    setIsGameReplayed(true)
+    quizContainerRef.current.scrollIntoView({behavior: 'smooth'})
+  }
 
   return (
-    <section className="quiz-container">
+    <section className="quiz-container" ref={quizContainerRef}>
       {
         quiz.length > 0 ?
         <>
@@ -97,7 +111,7 @@ export default function Questions() {
 
             <div className="result">
               <p>{calculateScore()}</p>
-              <button className="restart-btn">Play again</button>
+              <button className="restart-btn" onClick={playAgain}>Play again</button>
             </div> : 
 
             <button 
