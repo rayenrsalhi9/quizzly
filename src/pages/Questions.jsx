@@ -6,13 +6,12 @@ import { mergeAndShuffle } from "../utils/shuffle"
 
 export default function Questions() {
 
-  console.log('component render')
-
   const [quiz, setQuiz] = useState([])
   const [userAnswers, setUserAnswers] = useState(new Array(10).fill(null))
 
   const correctAnswers = quiz.map(el => el.correct_answer)
 
+  const canCheckAnswer = userAnswers.every(answer => answer)
 
   function handleChange(answerIndex, choosenAnswer) {
     setUserAnswers(prev => prev.map((el, index) => {
@@ -68,7 +67,12 @@ export default function Questions() {
               </div>
             )
           })} 
-          <button className="submit-btn">Check answers</button>
+          <button 
+            className="submit-btn" 
+            disabled={!canCheckAnswer}
+          >
+            Check answers
+          </button>
         </>
         : <p className="loading-status">Loading Quiz...</p>
       } 
