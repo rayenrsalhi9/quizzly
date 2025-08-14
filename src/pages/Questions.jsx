@@ -8,6 +8,7 @@ export default function Questions() {
 
   const [quiz, setQuiz] = useState([])
   const [userAnswers, setUserAnswers] = useState(new Array(10).fill(null))
+  const [isResultRevealed, setIsResultRevealed] = useState(false)
 
   const correctAnswers = quiz.map(el => el.correct_answer)
 
@@ -20,10 +21,12 @@ export default function Questions() {
   }
 
   function handleSubmit() {
-    console.log('final answer:')
-    console.log(correctAnswers)
-    console.log(userAnswers)
-    console.log(`correct answers: ${userAnswers.filter(el => correctAnswers.includes(el)).length} / 10`)
+    setIsResultRevealed(true)
+  }
+
+  function calculateScore() {
+    const score = userAnswers.filter(el => correctAnswers.includes(el)).length
+    return `You scored ${score}/${correctAnswers.length} correct answers`
   }
 
   useEffect(() => {
@@ -78,13 +81,23 @@ export default function Questions() {
               </div>
             )
           })} 
-          <button 
-            className="submit-btn" 
-            disabled={!canCheckAnswer}
-            onClick={handleSubmit}
-          >
-            Check answers
-          </button>
+          
+          {
+            isResultRevealed ? 
+
+            <div className="result">
+              <p>{calculateScore()}</p>
+              <button className="restart-btn">Play again</button>
+            </div> : 
+
+            <button 
+              className="submit-btn" 
+              disabled={!canCheckAnswer}
+              onClick={handleSubmit}
+            >
+              Check answers
+            </button>
+          }
         </>
         : <p className="loading-status">Loading Quiz...</p>
       } 
