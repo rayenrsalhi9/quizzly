@@ -103,3 +103,10 @@ form.quiz-container .question .choices input[type='radio']:checked + label {
     background-color: #D6DBF5;
     box-shadow: 0 4px 8px #D6DBF5;
 }
+
+/* loading status design */
+.loading-status {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 600;
+}

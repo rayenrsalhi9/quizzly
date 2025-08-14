@@ -19,6 +19,7 @@ export default function Questions() {
   return (
     <form className="quiz-container">
       {
+        quiz.length > 0 ?
         quiz.map((el, index) => {
 
           const choices = mergeAndShuffle(el.incorrect_answers, el.correct_answer)
@@ -48,8 +49,8 @@ export default function Questions() {
               </div>
             </div>
           )
-        })
-      }
+        }) : <p className="loading-status">Loading Quiz...</p>
+      } 
     </form>
   )
 }
