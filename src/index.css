@@ -129,7 +129,7 @@ section.home img {
     transition: .6s ease;
 }
 
-.quiz-container button.submit-btn:hover {
+.quiz-container button.submit-btn:not(:disabled):hover {
     background-color: #293264;
 }
 

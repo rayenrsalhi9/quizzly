@@ -9,8 +9,6 @@ export default function Questions() {
   const [quiz, setQuiz] = useState([])
   const [userAnswers, setUserAnswers] = useState(new Array(10).fill(null))
 
-  console.log(quiz)
-
   const correctAnswers = quiz.map(el => el.correct_answer)
 
   const canCheckAnswer = userAnswers.every(answer => answer)
