@@ -3,6 +3,7 @@ import { decode } from "html-entities"
 import { nanoid } from "nanoid"
 import { getQuiz } from "../api"
 import { mergeAndShuffle } from "../utils/shuffle"
+import clsx from "clsx"
 
 export default function Questions() {
 
@@ -57,7 +58,14 @@ export default function Questions() {
                 <div className="choices">
                   {
                     el.choices.map(choice => {
+
                       const choiceId = nanoid()
+
+                      const choiceClassName = clsx({
+                        'correct': isResultRevealed && correctAnswers.includes(choice),
+                        'incorrect': isResultRevealed && userAnswers.includes(choice) && !correctAnswers.includes(choice)
+                      })
+
                       return (
                         <div key={choice}>
                           <input 
@@ -71,6 +79,7 @@ export default function Questions() {
                           <label 
                             htmlFor={choiceId} 
                             onClick={() => handleChange(index, choice)}
+                            className={choiceClassName}
                           >
                             {choice}
                           </label>

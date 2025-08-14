@@ -122,6 +122,15 @@ section.home img {
     pointer-events: none;
 }
 
+.quiz-container .question .choices input[type='radio']:disabled + label.correct {
+    opacity: 1;
+    background-color: #94D7A2;
+}
+
+.quiz-container .question .choices input[type='radio']:disabled + label.incorrect {
+    background-color: #F8BCBC;
+}
+
 .quiz-container button.submit-btn {
     display: block;
     margin: 1.25em auto 0;
