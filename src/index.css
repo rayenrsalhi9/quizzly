@@ -25,7 +25,8 @@ section.home {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
 
     text-align: center;
     padding: 1em;
